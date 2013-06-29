@@ -61,16 +61,20 @@ def prompt_for_credentials(default_user="", default_host=""):
     Tests connection and exits if failure.
     """
 
-    print "What is your SMTP user name (e.g., your email address)?"
-    user = raw_input("Username (%s): " % default_user).strip() or default_user
-    password = getpass.getpass()
+    try:
+        print "What is your SMTP user name (e.g., your email address)?"
+        user = raw_input("Username (%s): " % default_user).strip() or default_user
+        password = getpass.getpass()
 
-    default_host = default_host or ("smtp." + user.split("@", 1)[1] if "@" in user else "")
-    host = raw_input("SMTP host name (%s): " % (default_host)) or default_host
-    host = host.strip()
-    port = 587
+        default_host = default_host or ("smtp." + user.split("@", 1)[1] if "@" in user else "")
+        host = raw_input("SMTP host name (%s): " % (default_host)) or default_host
+        host = host.strip()
+        port = 587
 
-    return {"host": host, "port": port, "user": user, "password": password}
+        return {"host": host, "port": port, "user": user, "password": password}
+    except (KeyboardInterrupt, SystemExit):
+        print "\nCanceled."
+        sys.exit(2)
 
 
 def test_credentials(credentials):
