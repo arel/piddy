@@ -8,7 +8,7 @@ piddy waits for the process to finish, and then sends an email notification to o
 people.
 
 ### requirements
-either:
+Either:
   * an SMTP server such as `sendmail` running on localhost
   * or credentials to an external SMTP server, such as Gmail (see the `-p` or `-g` flags).
 
@@ -54,7 +54,7 @@ usage: piddy.py [-h] -e EMAIL [-n NAME] [-s SENDER] [-p] [-g] pid
 Notify by email when a process finishes running. Given a process specified by
 its ID number (e.g., as found by "ps -fe" or "top"), wait for the process to
 finish, and send an email notification to one or more people. Email is sent
-via smtplib. REQUIRES an SMTP server running either on localhost, or correct
+via smtplib. REQUIRES either an SMTP server running on localhost, or correct
 credentials to an external SMTP server such as a Gmail account.
 
 positional arguments:
