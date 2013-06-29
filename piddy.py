@@ -16,7 +16,8 @@ Given a process specified by its ID number (e.g., as found by "ps -fe" or "top")
 wait for the process to finish, and send an email notification to one or more
 people. Email is sent via smtplib.
 
-REQUIRES sendmail to be installed.
+REQUIRES SMTP server running on localhost, or correct credentials to an
+external SMTP server.
 
 """
 
