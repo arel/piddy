@@ -8,7 +8,7 @@ piddy waits for the process to finish, and then sends an email notification to o
 people.
 
 ### requirements
-either:
+Either:
   * an SMTP server such as `sendmail` running on localhost
   * or credentials to an external SMTP server, such as Gmail (see the `-p` or `-g` flags).
 
@@ -18,7 +18,7 @@ Find the process id using a command like `ps`.
 ```
 $ ps -fe | grep python
   501 30406 29915   0 11:28PM ttys001    0:00.00 grep python
-  501 30119 30114   0  8:24PM ttys002    0:00.06 /usr/local/Cellar/python/2.7.3/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python longComputation.py
+  501 30119 30114   0  8:24PM ttys002    0:00.06 Python longComputation.py
 ```
 
 In this case, let's listen for my Python process (30119). To schedule a notification when the process finishes:
@@ -54,7 +54,7 @@ usage: piddy.py [-h] -e EMAIL [-n NAME] [-s SENDER] [-p] [-g] pid
 Notify by email when a process finishes running. Given a process specified by
 its ID number (e.g., as found by "ps -fe" or "top"), wait for the process to
 finish, and send an email notification to one or more people. Email is sent
-via smtplib. REQUIRES an SMTP server running either on localhost, or correct
+via smtplib. REQUIRES either an SMTP server running on localhost, or correct
 credentials to an external SMTP server such as a Gmail account.
 
 positional arguments:
