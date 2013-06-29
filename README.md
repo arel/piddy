@@ -18,7 +18,7 @@ Find the process id using a command like `ps`.
 ```
 $ ps -fe | grep python
   501 30406 29915   0 11:28PM ttys001    0:00.00 grep python
-  501 30119 30114   0  8:24PM ttys002    0:00.06 /usr/local/Cellar/python/2.7.3/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python longComputation.py
+  501 30119 30114   0  8:24PM ttys002    0:00.06 Python longComputation.py
 ```
 
 In this case, let's listen for my Python process (30119). To schedule a notification when the process finishes:
