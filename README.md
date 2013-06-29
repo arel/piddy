@@ -8,8 +8,9 @@ piddy waits for the process to finish, and then sends an email notification to o
 people.
 
 ### requirements
-  * `sendmail` is required on localhost to send email (or any SMTP mail server compatible with Python's built-in `smtplib`).
-  * alternatively you can use another SMTP server like Gmail, by using the `-p` flag.
+either:
+  * an SMTP server such as `sendmail` running on localhost
+  * or credentials to an external SMTP server, such as Gmail (see the `-p` or `-g` flags).
 
 ### examples
 
@@ -29,17 +30,32 @@ Done!
 Sent email notification to arel@example.com.
 ```
 
-You can send to multiple email addresses by separating them with commas.
+If we don't have `sendmail` running locally, we can enter our credentials
+to an external server:
+```
+$ python piddy.py -e arel@example.com --gmail 30119
+What is your SMTP user name (e.g., your email address)?
+Username (arel@example.com):
+Password:
+SMTP host name (smtp.gmail.com):
+Credentials accepted.
+Waiting for pid 30119 to complete. (44 s)...
+Done!
+Sent email notification to arel@example.com.
+```
+
+You can also send a notification to multiple email addresses by separating them with commas.
 
 ### usage
 
 ```
-usage: piddy.py [-h] -e EMAIL [-n NAME] [-s SENDER] pid
+usage: piddy.py [-h] -e EMAIL [-n NAME] [-s SENDER] [-p] [-g] pid
 
 Notify by email when a process finishes running. Given a process specified by
 its ID number (e.g., as found by "ps -fe" or "top"), wait for the process to
 finish, and send an email notification to one or more people. Email is sent
-via smtplib. REQUIRES sendmail to be installed.
+via smtplib. REQUIRES an SMTP server running either on localhost, or correct
+credentials to an external SMTP server such as a Gmail account.
 
 positional arguments:
   pid                   a process id number to watch
@@ -53,4 +69,5 @@ optional arguments:
   -s SENDER, --sender SENDER
                         email address to send email from
   -p, --prompt          prompt for SMTP credentials
+  -g, --gmail           prompt for Gmail credentials (implies -p)
 ```

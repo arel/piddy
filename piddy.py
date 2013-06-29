@@ -16,8 +16,8 @@ Given a process specified by its ID number (e.g., as found by "ps -fe" or "top")
 wait for the process to finish, and send an email notification to one or more
 people. Email is sent via smtplib.
 
-REQUIRES SMTP server running on localhost, or correct credentials to an
-external SMTP server.
+REQUIRES an SMTP server running either on localhost, or correct credentials to an
+external SMTP server such as a Gmail account.
 
 """
 
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     parser.add_argument('-p', '--prompt', action="store_true", default=False,
                         help='prompt for SMTP credentials')
     parser.add_argument('-g', '--gmail', action="store_true", default=False,
-                        help='prompt for Gmail credentials')
+                        help='prompt for Gmail credentials (implies -p)')
 
     # By default, print help and exit
     if len(sys.argv) == 1:
