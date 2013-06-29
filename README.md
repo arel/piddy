@@ -21,7 +21,7 @@ $ ps -fe | grep python
   501 30119 30114   0  8:24PM ttys002    0:00.06 Python longComputation.py
 ```
 
-In this case, let's listen for my Python process (30119). To schedule a notification when the process finishes:
+In this case, let's listen for my Python process (30119) to finish. To schedule a notification when the process finishes:
 ```
 $ python piddy.py -e arel@example.com 30119
 
