@@ -14,6 +14,7 @@ def check_pid(pid):
 
     See: http://stackoverflow.com/questions/568271/check-if-pid-is-not-in-use-in-python
     """
+
     try:
         os.kill(pid, 0)
     except OSError:
@@ -23,15 +24,24 @@ def check_pid(pid):
 
 
 def wait_for_pid(pid):
+    """
+    Wait for process (pid) to complete before returning.
+    """
+
     t0 = time.time()
     while check_pid(pid):
-        print "\rWaiting for pid (%d s)..." % (time.time()-t0),
+        print "\rWaiting for pid %d to complete. (%d s)..." % (pid, time.time()-t0),
         sys.stdout.flush()
         time.sleep(1)
     print "\nDone!"
 
 
 def notify(pid, recipients, name=None, sender=None):
+    """
+    Send email notification to list of recipients, regarding
+    process (pid) completing.
+    """
+
     recipients = recipients if type(recipients) in [list, tuple] else [recipients]
     name = name or "Your process"
     sender = sender or getpass.getuser() + "@" + socket.gethostname()
@@ -42,19 +52,19 @@ def notify(pid, recipients, name=None, sender=None):
     msg['From'] = sender
     msg['To'] = ", ".join(recipients)
 
-    print sender
-    print name
-    print recipients
-    print text
-    print msg
     s = smtplib.SMTP('127.0.0.1')
     s.sendmail(sender, recipients, msg.as_string())
     s.quit()
-    print "sent"
+    print "Sent email notification to %s." % (msg['To'])
 
 
 if __name__ == "__main__":
+    """
+    Parse arguments, wait, then notify.
+    """
+
     parser = argparse.ArgumentParser(description='Process some integers.')
+
     parser.add_argument('pid', type=int,
                         help='a process id number to watch')
     parser.add_argument('-e', '--email', required=True, type=str,
