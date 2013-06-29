@@ -48,7 +48,7 @@ def notify(pid, recipients, name=None, sender=None):
     print text
     print msg
     s = smtplib.SMTP('127.0.0.1')
-    s.sendmail(sender, [you], msg.as_string())
+    s.sendmail(sender, recipients, msg.as_string())
     s.quit()
     print "sent"
 
