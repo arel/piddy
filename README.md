@@ -9,7 +9,7 @@ people.
 
 ### requirements
   * `sendmail` is required on localhost to send email (or any SMTP mail server compatible with Python's built-in `smtplib`).
-  * alternatively you can use another SMTP server like Gmail using the `-p` flag.
+  * alternatively you can use another SMTP server like Gmail, by using the `-p` flag.
 
 ### examples
 
