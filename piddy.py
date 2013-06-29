@@ -117,9 +117,9 @@ def notify(pid, recipients, name=None, sender=None,
     """
 
     recipients = recipients if type(recipients) in [list, tuple] else [recipients]
-    name = name or "Your process"
+    name = ", " + name if name else ""
     sender = sender or getpass.getuser() + "@" + socket.gethostname()
-    text = "%s (pid %s), finished running." % (name, pid)
+    text = "Your process%s (pid %s), finished running." % (name, pid)
 
     msg = MIMEText(text)
     msg['Subject'] = text
