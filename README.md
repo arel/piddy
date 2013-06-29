@@ -4,11 +4,12 @@ piddy
 A lightweight email notifier for long-running processes.
 
 Given a process specified by its ID number (e.g., as found by `ps -fe` or `top`),
-waits for the process to finish, and then sends an email notification to one or more
+piddy waits for the process to finish, and then sends an email notification to one or more
 people.
 
 ### requirements
   * `sendmail` is required on localhost to send email (or any SMTP mail server compatible with Python's built-in `smtplib`).
+  * alternatively you can use another SMTP server like Gmail using the `-p` flag.
 
 ### examples
 
@@ -51,4 +52,5 @@ optional arguments:
   -n NAME, --name NAME  human-readable name to give the process
   -s SENDER, --sender SENDER
                         email address to send email from
+  -p, --prompt          prompt for SMTP credentials
 ```
