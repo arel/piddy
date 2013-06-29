@@ -34,6 +34,7 @@ If we don't have `sendmail` running locally, we can enter our credentials
 for an external server:
 ```
 $ python piddy.py -e arel@example.com --gmail 30119
+
 What is your SMTP user name (e.g., your email address)?
 Username (arel@example.com):
 Password:
